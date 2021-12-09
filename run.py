@@ -41,7 +41,7 @@ print('MATCH TWO SYMBOLS:\n')
 print('££- / $$- / €€- and -££ / -$$ / -€€\n')
 print('WIN wager x 2!!\n')
 print()
-username = input('What is your name? \n')
+username = input('What is your name? ')
 print()
 print(f'Hey {username}, you have {wallet} credits in your wallet!\n')
 print('Minimum wager is 1 credit.\n')
@@ -54,6 +54,7 @@ while wallet > 0:
         continue
     if wager > wallet:
         print(f'Sorry {username}, insufficient credits!\n')
+        continue
     else:
         wallet -= wager
         reel_1 = random.choice(symbols)
@@ -62,4 +63,21 @@ while wallet > 0:
     
     print(f'     |{random.choice(symbols)}|{random.choice(symbols)}|{random.choice(symbols)}|')
     print(f' WIN•|{reel_1}|{reel_2}|{reel_3}|•LINE')
-    print(f'     |{random.choice(symbols)}|{random.choice(symbols)}|{random.choice(symbols)}|')
+    print(f'     |{random.choice(symbols)}|{random.choice(symbols)}|{random.choice(symbols)}|\n')
+
+    if reel_1 == reel_2 and reel_2 == reel_3:
+        winnings = wager * 3
+        print(f'Awesome, you matched three and won {winnings} credits!\n')
+        wallet += winnings
+    elif reel_1 == reel_2 or reel_2 == reel_3:
+        winnings = wager * 2
+        print(f'Not bad, you matched two and won {winnings} credits!\n')
+        wallet += winnings
+    else:
+        print('Unlucky, you lost that spin.\n')
+    print('********************')
+    print()
+    print(f'You have {wallet} credits.\n')
+
+print(f"Sorry {username}, you're broke :(\n")
+print('Thank you for playing\n')
