@@ -14,7 +14,7 @@ Output user info and instructions
 """
 
 
-def introduction(wallet):
+def introduction():
     """
     This method is called when an
     introduction is required
@@ -60,6 +60,9 @@ def introduction(wallet):
     return username
 
 
+# def get_leaderboard():
+
+
 def game(username: str, wallet: int = 100):
     """
     Method to hold the running game
@@ -74,7 +77,7 @@ def game(username: str, wallet: int = 100):
         while wallet > 0:
             try:
                 wager = int(input("How much would you like to wager..? \n"))
-            except ValueError as e:
+            except ValueError:
                 print("Please wager a whole number of credits.\n")
                 continue
             if wager > wallet:
@@ -90,17 +93,22 @@ def game(username: str, wallet: int = 100):
 
             print()
             print("   ••••••••••••••••••••••••••••••")
-            print(f"  •        | {random.choice(symbols)} | {random.choice(symbols)} | {random.choice(symbols)} |         •")
+            print(f"  •        | {random.choice(symbols)} "
+                  f"| {random.choice(symbols)} |"
+                  f" {random.choice(symbols)} |         •")
             print(" •         —————————————          •")
             print(f"•    WIN • | {reel_1} | {reel_2} | {reel_3} | • LINE    •")
             print(" •         —————————————          •")
-            print(f"  •        | {random.choice(symbols)} | {random.choice(symbols)} | {random.choice(symbols)} |         •")
+            print(f"  •        | {random.choice(symbols)} "
+                  f"| {random.choice(symbols)} |"
+                  f" {random.choice(symbols)} |         •")
             print("   ••••••••••••••••••••••••••••••")
             print()
 
             if reel_1 == reel_2 and reel_2 == reel_3:
                 winnings = wager * 3
-                print(f"Awesome, you matched three and won {winnings} credits!")
+                print(f"Awesome, you matched three and won"
+                      f" {winnings} credits!")
                 wallet += winnings
             elif reel_1 == reel_2 or reel_2 == reel_3:
                 winnings = wager * 2
@@ -113,20 +121,21 @@ def game(username: str, wallet: int = 100):
 
         print(f"Sorry {username}, you're broke! :(\n")
 
-        choice = input("Would you like to:\n"
-                       "1. Play again\n"
-                       "2. View Leaderboard\n"
-                       "3. Quit playing..?\n"
+        choice = input("Please enter...\n"
+                       "1 to play again\n"
+                       "2 to see Leaderboard\n"
+                       "3 to quit playing..?\n"
                        "\n"
                        "Please choose 1, 2 or 3:\n")
 
         if choice == "1":
             game(username)
-            # break
         elif choice == "2":
-            print("Leaderboard")
+            print("get_leaderboard()")
+            # get_leaderboard()
             break
         else:
+            print()
             print(f"Thanks for playing, {username}!\n")
             main()
 
@@ -138,7 +147,7 @@ def main():
     Method to hold all above functions / methods
     """
     wallet = 100
-    username = introduction(wallet)
+    username = introduction()
     game(username, wallet)
 
 
