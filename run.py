@@ -46,7 +46,7 @@ def introduction():
           " arm-like handle at one side that a player pulls down to\n"
           " make reels spin; the player wins money or tokens when\n"
           " certain combinations of symbols line up on these reels.\n")
-    print(" AKA: Fruit machine, poker machine, slot machine\n")
+    print(" AKA: Fruit machine, poker machine, slot machine.\n")
     print("•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••\n"
           " MATCH TWO SYMBOLS:\n"
           " €€- / ££- / $$- / ¥¥- or -€€ / -££ / -$$ / -¥¥\n"
@@ -67,8 +67,12 @@ def game(username: str, wallet: int = 100):
     """
     Method to hold the running game
     Default wallet value = 100
+    Sets number of plays and max credits held
+    variables to 0 for each new game
     """
     while True:
+        plays = 0
+        max_credits = 0
 
         while wallet > 0:
             print()
@@ -86,12 +90,14 @@ def game(username: str, wallet: int = 100):
             elif wager < 0:
                 print("Please enter a positive number")
             else:
+                plays += 1
                 wallet -= wager
                 reel_1 = random.choice(symbols)
                 reel_2 = random.choice(symbols)
                 reel_3 = random.choice(symbols)
 
             print()
+            # print(f"             {plays}")
             print("   ••••••••••••••••••••••••••••••")
             print(f"  •        | {random.choice(symbols)} "
                   f"| {random.choice(symbols)} |"
@@ -108,23 +114,28 @@ def game(username: str, wallet: int = 100):
             if reel_1 == reel_2 and reel_2 == reel_3:
                 winnings = wager * 3
                 print(f"Awesome, you matched three and won"
-                      f" {winnings} credits!")
+                      f" {winnings} credits!\n")
                 wallet += winnings
             elif reel_1 == reel_2 or reel_2 == reel_3:
                 winnings = wager * 2
-                print(f"Not bad, you matched two and won {winnings} credits!")
+                print(f"Not bad, you matched two and won"
+                      f" {winnings} credits!\n")
                 wallet += winnings
             else:
                 print("Unlucky, you lost that spin.\n")
 
+            if wallet > max_credits:
+                max_credits = wallet
+
+            print(f"You have played {plays} games and held a maximum of "
+                  f"{max_credits} credits...\n")
+
         print(f"Sorry {username}, you're broke! :(\n")
 
-        choices = input("Please enter...\n"
+        choices = input("Please choose...\n"
                         "1 to play again\n"
                         "2 to see Leaderboard\n"
-                        "3 to quit playing..?\n"
-                        "\n"
-                        "Please choose 1, 2 or 3:\n")
+                        "3 to quit playing\n")
 
         for choice in choices:
             if choice == "1":
