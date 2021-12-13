@@ -70,11 +70,11 @@ def game(username: str, wallet: int = 100):
     """
     while True:
 
-        print()
-        print(f"Hey {username}, you have {wallet} credits in your wallet!\n"
-              "Minimum wager is 1 credit.\n")
-
         while wallet > 0:
+            print()
+            print(f"Hey {username}, you have {wallet} credits "
+                  "in your wallet!\n"
+                  "Minimum wager is 1 credit.\n")
             try:
                 wager = int(input("How much would you like to wager..? \n"))
             except ValueError:
@@ -117,27 +117,30 @@ def game(username: str, wallet: int = 100):
             else:
                 print("Unlucky, you lost that spin.\n")
 
-            print(f"You have {wallet} credits.\n")
-
         print(f"Sorry {username}, you're broke! :(\n")
 
-        choice = input("Please enter...\n"
-                       "1 to play again\n"
-                       "2 to see Leaderboard\n"
-                       "3 to quit playing..?\n"
-                       "\n"
-                       "Please choose 1, 2 or 3:\n")
+        choices = input("Please enter...\n"
+                        "1 to play again\n"
+                        "2 to see Leaderboard\n"
+                        "3 to quit playing..?\n"
+                        "\n"
+                        "Please choose 1, 2 or 3:\n")
 
-        if choice == "1":
-            game(username)
-        elif choice == "2":
-            print("get_leaderboard()")
-            # get_leaderboard()
-            break
-        else:
-            print()
-            print(f"Thanks for playing, {username}!\n")
-            main()
+        for choice in choices:
+            if choice == "1":
+                game(username)
+            elif choice == "2":
+                print("get_leaderboard()")
+                # get_leaderboard()
+                break
+            elif choice == "3":
+                print()
+                print(f"Thanks for playing, {username}!\n")
+                main()
+            else:
+                print()
+                print("Please enter 1, 2, or 3!\n")
+                continue
 
     return None
 
