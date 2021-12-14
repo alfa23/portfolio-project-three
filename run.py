@@ -29,9 +29,9 @@ SYMBOLS = ["€", "£", "$", "¥"]
 def introduction():
     """
     This method is called when an
-    introduction is required
+    introduction is required (new game start)
     """
-    print()
+    print("\n        ...ENUMERATING SCORES DATABASE...\n")
     print(
           "    #########• T H E   P Y T H O N •#########\n"
           "    #                                       #\n"
@@ -67,7 +67,7 @@ def introduction():
           " €€€ / £££ / $$$ / ¥¥¥\n"
           " WIN WAGER x3!\n"
           "•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••\n")
-    username = input("What's your name? \n")
+    username = input("Enter your name to play: \n")
     # for chars in input(username):
     #     if chars not re.match("^[A-Z, a-z]*$", username):
     #         print("Error! Only letters allowed!")
@@ -104,7 +104,9 @@ def get_best_players(username):
     lp_turns = long_player['turns']
 
     print(f"{lp_name} has the longest play streak, with"
-          f" {lp_turns} games played!\n")
+          f" {lp_turns} games played!\n"
+          "\nThe scores database has been updated with your"
+          " last score...\n")
 
     choices = input("Please choose...\n"
                     "1 to play again\n"
@@ -138,17 +140,21 @@ def game(username: str, wallet: int = 100):
             print()
             print(f"Hey {username}, you have {wallet} credits "
                   "in your wallet!\n"
-                  "Minimum wager is 1 credit.\n")
+                  "Minimum wager is 10 credits.\n")
             try:
                 wager = int(input("How much would you like to wager..? \n"))
             except ValueError:
                 print("Please wager a whole number of credits.\n")
                 continue
             if wager > wallet:
-                print(f"Sorry {username}, insufficient credits!\n")
+                print("Insufficient credits!\n")
                 continue
             elif wager < 0:
-                print("Please enter a positive number")
+                print("Please enter a positive number!\n")
+                continue
+            elif wager < 10:
+                print("Minimum wager is 10 credits!\n")
+                continue
             else:
                 turns += 1
                 wallet -= wager
@@ -189,7 +195,7 @@ def game(username: str, wallet: int = 100):
             print(f"You have played {turns} games and held a maximum of "
                   f"{maxcredits} credits...\n")
 
-        print(f"Sorry {username}, you're broke! :(\n")
+        print(f"\nSorry {username}, you're broke! :(\n")
 
         user_score = [username, maxcredits, turns]
         scoreboard = SHEET.worksheet("scoreboard")
