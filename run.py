@@ -81,7 +81,8 @@ def introduction():
 
 def get_best_players(username):
     """
-    Func
+    Function to access python_bandits Google sheet and
+    keep track of user scores for best players data
     """
     scoreboard = SHEET.worksheet('scoreboard')
     data = scoreboard.get_all_records()
@@ -92,9 +93,9 @@ def get_best_players(username):
     hs_credits = hi_scorer['maxcredits']
 
     print()
-    print(" * BEST PLAYERS *")
+    print(" * ALL-TIME BEST BANDIT BEATERS *")
     print()
-    print(f"{hs_name} has held the biggest wallet, with"
+    print(f"{hs_name} has amassed the biggest wallet, with"
           f" {hs_credits} credits held!\n")
 
     play_streak = sorted(data, key=lambda i: i['turns'], reverse=True)
