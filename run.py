@@ -1,14 +1,15 @@
 """
 Import random function.
-Import regular expressions (re) for username checks
-Import gspread and google-auth packages for best_players
-records. Set constant vars for SCOPE, CREDS, GSPREAD_CLIENT
-and SHEET to access Google Sheets data.
-Process code copied & modified from Love Sandwiches project.
+Import regular expressions (re) for username check.
+Import gspread and google-auth packages to access &
+update best_players records.
+Set constant vars for SCOPE, CREDS, GSPREAD_CLIENT and
+SHEET to access Google Sheets data (process & code
+copied & modified from Love Sandwiches project.)
 Declare global symbol vars for the game.
 """
 
-# import re
+import re
 import random
 import gspread
 from google.oauth2.service_account import Credentials
@@ -26,10 +27,31 @@ SHEET = GSPREAD_CLIENT.open('python_bandits')
 SYMBOLS = ["€", "£", "$", "¥"]
 
 
+def get_username():
+    """
+    Fuction to collect and verify username
+    when required (new game start).
+    """
+    introduction()
+    while True:
+        username = input("Enter your name to play "
+                         "(max. 8 characters): \n")
+        if not re.match("^[A-Z, a-z]*$", username):
+            print("\nError! Only letters allowed!\n")
+            continue
+        elif len(username) < 1 or len(username) > 8:
+            print("\nError! 1-8 letters required!\n")
+            continue
+        else:
+            break
+
+    return username
+
+
 def introduction():
     """
-    This method is called when an
-    introduction is required (new game start)
+    This method is called when an introduction
+    is required (new game start).
     """
     print("\n        ...ENUMERATING SCORES DATABASE...\n")
     print(
@@ -67,47 +89,42 @@ def introduction():
           " €€€ / £££ / $$$ / ¥¥¥\n"
           " WIN WAGER x3!\n"
           "•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••\n")
-    username = input("Enter your name to play: \n")
-    # for chars in input(username):
-    #     if chars not re.match("^[A-Z, a-z]*$", username):
-    #         print("Error! Only letters allowed!")
-    #         continue
-    #     elif len(username) > 8:
-    #         print("Error! Only 8 characters allowed!")
-    #         continue
-
-    return username
 
 
 def get_best_players(username):
     """
     Function to access python_bandits Google sheet and
-    keep track of user scores for best players data
+    keep track of user scores for best players data.
     """
     scoreboard = SHEET.worksheet('scoreboard')
     data = scoreboard.get_all_records()
 
+    # Access gsheet, reverse-sort by maxcredits, assign hi_scorer name & score.
     hi_score = sorted(data, key=lambda i: i['maxcredits'], reverse=True)
     hi_scorer = next(iter(hi_score))
     hs_name = hi_scorer['username']
     hs_credits = hi_scorer['maxcredits']
 
+    # Output hi_scorer data.
     print()
     print(" * ALL-TIME BEST BANDIT BEATERS *")
     print()
     print(f"{hs_name} has amassed the biggest wallet, with"
           f" {hs_credits} credits held!\n")
 
+    # Access gsheet, reverse-sort by #turns, assign long_player name & score.
     play_streak = sorted(data, key=lambda i: i['turns'], reverse=True)
     long_player = next(iter(play_streak))
     lp_name = long_player['username']
     lp_turns = long_player['turns']
 
+    # Output long_player data, inform user their score is saved.
     print(f"{lp_name} has the longest play streak, with"
           f" {lp_turns} games played!\n"
           "\nThe scores database has been updated with your"
-          " last score...\n")
+          " latest score...\n")
 
+    # End-of-game user choices & validation.
     choices = input("Please choose...\n"
                     "1 to play again\n"
                     "2 to quit playing\n")
@@ -127,10 +144,10 @@ def get_best_players(username):
 
 def game(username: str, wallet: int = 100):
     """
-    Method to hold the running game
-    Default wallet value = 100
-    Sets number of turns and max credits held
-    variables to 0 for each new game
+    Method to hold the running game.
+    Default wallet value = 100.
+    Sets number of turns and max credits held variables
+    to 0 for each new game.
     """
     while True:
         turns = 0
@@ -141,27 +158,28 @@ def game(username: str, wallet: int = 100):
             print(f"Hey {username}, you have {wallet} credits "
                   "in your wallet!\n"
                   "Minimum wager is 10 credits.\n")
-            try:
+            try:   # Integer wager value input from user & validate.
                 wager = int(input("How much would you like to wager..? \n"))
             except ValueError:
                 print("Please wager a whole number of credits.\n")
                 continue
-            if wager > wallet:
+            if wager > wallet:   # Check credits available.
                 print("Insufficient credits!\n")
                 continue
-            elif wager < 0:
+            elif wager < 0:   # Check wager is +ve.
                 print("Please enter a positive number!\n")
                 continue
-            elif wager < 10:
+            elif wager < 10:   # Check minimum wager value met.
                 print("Minimum wager is 10 credits!\n")
                 continue
-            else:
+            else:   # Increment turns & deduct wager from wallet.
                 turns += 1
                 wallet -= wager
                 reel_1 = random.choice(SYMBOLS)
                 reel_2 = random.choice(SYMBOLS)
                 reel_3 = random.choice(SYMBOLS)
 
+            # Spin the reels!
             print()
             print("   ••••••••••••••••••••••••••••••")
             print(f"  •        | {random.choice(SYMBOLS)} "
@@ -176,6 +194,7 @@ def game(username: str, wallet: int = 100):
             print("   ••••••••••••••••••••••••••••••")
             print()
 
+            # Check result, calc winnings & update wallet as required.
             if reel_1 == reel_2 and reel_2 == reel_3:
                 winnings = wager * 3
                 print(f"Awesome, you matched three and won"
@@ -189,6 +208,7 @@ def game(username: str, wallet: int = 100):
             else:
                 print("Unlucky, you lost that spin.\n")
 
+            # Check and update maxcredits value as required.
             if wallet > maxcredits:
                 maxcredits = wallet
 
@@ -197,13 +217,15 @@ def game(username: str, wallet: int = 100):
 
         print(f"\nSorry {username}, you're broke! :(\n")
 
+        # Collate user data for current game & append to gsheet.
         user_score = [username, maxcredits, turns]
         scoreboard = SHEET.worksheet("scoreboard")
         scoreboard.append_row(user_score)
 
+        # End-of-game user choices & validation.
         choices = input("Please choose...\n"
                         "1 to play again\n"
-                        "2 to see best_players\n"
+                        "2 to see best players\n"
                         "3 to quit playing\n")
 
         for choice in choices:
@@ -225,13 +247,13 @@ def game(username: str, wallet: int = 100):
 
 def main():
     """
-    Method to hold all above functions / methods
+    Method to hold all above functions / methods.
     """
     wallet = 100
-    username = introduction()
+    username = get_username()
     game(username, wallet)
 
 
 if __name__ == "__main__":
-    # Call main function if this file is the entry point
+    # Call main function if this file is the entry point.
     main()
