@@ -86,10 +86,10 @@ def get_best_players(username):
     scoreboard = SHEET.worksheet('scoreboard')
     data = scoreboard.get_all_records()
 
-    hi_score = sorted(data, key=lambda i: i['credits'], reverse=True)
+    hi_score = sorted(data, key=lambda i: i['maxcredits'], reverse=True)
     hi_scorer = next(iter(hi_score))
     hs_name = hi_scorer['username']
-    hs_credits = hi_scorer['credits']
+    hs_credits = hi_scorer['maxcredits']
 
     print()
     print(" * BEST PLAYERS *")
@@ -126,12 +126,12 @@ def game(username: str, wallet: int = 100):
     """
     Method to hold the running game
     Default wallet value = 100
-    Sets number of plays and max credits held
+    Sets number of turns and max credits held
     variables to 0 for each new game
     """
     while True:
-        plays = 0
-        max_credits = 0
+        turns = 0
+        maxcredits = 0
 
         while wallet > 0:
             print()
@@ -149,7 +149,7 @@ def game(username: str, wallet: int = 100):
             elif wager < 0:
                 print("Please enter a positive number")
             else:
-                plays += 1
+                turns += 1
                 wallet -= wager
                 reel_1 = random.choice(SYMBOLS)
                 reel_2 = random.choice(SYMBOLS)
@@ -182,13 +182,17 @@ def game(username: str, wallet: int = 100):
             else:
                 print("Unlucky, you lost that spin.\n")
 
-            if wallet > max_credits:
-                max_credits = wallet
+            if wallet > maxcredits:
+                maxcredits = wallet
 
-            print(f"You have played {plays} games and held a maximum of "
-                  f"{max_credits} credits...\n")
+            print(f"You have played {turns} games and held a maximum of "
+                  f"{maxcredits} credits...\n")
 
         print(f"Sorry {username}, you're broke! :(\n")
+
+        user_score = [username, maxcredits, turns]
+        scoreboard = SHEET.worksheet("scoreboard")
+        scoreboard.append_row(user_score)
 
         choices = input("Please choose...\n"
                         "1 to play again\n"
