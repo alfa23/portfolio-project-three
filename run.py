@@ -34,13 +34,12 @@ def get_username():
     """
     introduction()
     while True:
-        username = input("Enter your name to play "
-                         "(max. 8 characters): \n")
+        username = input("Enter your name to play (max. 8 letters): \n")
         if not re.match("^[A-Z, a-z]*$", username):
-            print("\nError! Only letters allowed!\n")
+            print("\n\033[1;31mError! Only letters allowed!\n\033[0;0m")
             continue
         elif len(username) < 1 or len(username) > 8:
-            print("\nError! 1-8 letters required!\n")
+            print("\n\033[1;31mError! 1-8 letters required!\n\033[0;0m")
             continue
         else:
             break
@@ -55,7 +54,7 @@ def introduction():
     """
     print("\n        ...ENUMERATING SCORES DATABASE...\n")
     print(
-          "    #########• T H E   P Y T H O N •#########\n"
+          "\033[1;34m    #########• T H E   P Y T H O N •#########\n"
           "    #                                       #\n"
           "    #   #     ##   ###   #   #  ####  ###   #\n"
           "    #  ##    #  #  #  #  ## ##  #     #  #  #\n"
@@ -69,9 +68,9 @@ def introduction():
           "    #  #  #  #  #  #  ##  #  #   #     #    #\n"
           "    #  ###   #  #  #   #  ###   ###    #    #\n"
           "    #                                       #\n"
-          "    #########################################\n")
-    print(" https://en.wiktionary.org/wiki/one-armed_bandit:\n")
-    print(' From one-armed (“having only one arm”) + bandit (“one\n'
+          "    #########################################\n\033[0;0m")
+    print(" \033[4;33mhttps://en.wiktionary.org/wiki/one-armed_bandit:\n")
+    print('\033[0;33m From one-armed (“having only one arm”) + bandit (“one\n'
           ' who robs others in a lawless area, especially as part\n'
           ' of a group; one who cheats others”),referring to the\n'
           ' fact that the machine is operated by a single handle\n'
@@ -80,15 +79,19 @@ def introduction():
           " arm-like handle at one side that a player pulls down to\n"
           " make reels spin; the player wins money or tokens when\n"
           " certain combinations of symbols line up on these reels.\n")
-    print(" AKA: Fruit machine, poker machine, slot machine.\n")
-    print("•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••\n"
+    print("\033[3;33m AKA: Fruit machine, poker machine,"
+          " slot machine.\n\033[0;0m")
+    print("\033[1;34m••••••••••••••••••••••••••••••••••••"
+          "•••••••••••••••••••••••\n"
           " MATCH TWO SYMBOLS:\n"
-          " €€- / ££- / $$- / ¥¥- or -€€ / -££ / -$$ / -¥¥\n"
-          " WIN WAGER x2!\n")
+          "\033[1;32m €€- / ££- / $$- / ¥¥-\033[0;0m or "
+          "\033[1;32m-€€ / -££ / -$$ / -¥¥\n"
+          "\033[1;34m WIN WAGER x2!\n")
     print(" MATCH THREE SYMBOLS:\n"
-          " €€€ / £££ / $$$ / ¥¥¥\n"
-          " WIN WAGER x3!\n"
-          "•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••\n")
+          " \033[1;32m€€€ / £££ / $$$ / ¥¥¥\n"
+          "\033[1;34m WIN WAGER x3!\n"
+          "•••••••••••••••••••••••••••••••••••••••••••••••"
+          "••••••••••••\n\033[0;0m")
 
 
 def get_best_players(username):
@@ -107,9 +110,9 @@ def get_best_players(username):
 
     # Output hi_scorer data.
     print()
-    print(" * ALL-TIME BEST BANDIT BEATERS *")
+    print("\033[1;34m * ALL-TIME BEST BANDIT BEATERS *")
     print()
-    print(f"{hs_name} has amassed the biggest wallet, with"
+    print(f"\033[1;33m{hs_name} has amassed the biggest wallet, with"
           f" {hs_credits} credits held!\n")
 
     # Access gsheet, reverse-sort by #turns, assign long_player name & score.
@@ -118,27 +121,28 @@ def get_best_players(username):
     lp_name = long_player['username']
     lp_turns = long_player['turns']
 
-    # Output long_player data, inform user their score is saved.
+    # Output long_player data. Inform user their score is saved.
     print(f"{lp_name} has the longest play streak, with"
-          f" {lp_turns} games played!\n"
-          "\nThe scores database has been updated with your"
-          " latest score...\n")
+          f" {lp_turns} games played!\n\033[0;0m"
+          "\n\033[1;32mThe scores database has been updated with your"
+          " latest score...\n\033[0;0m")
 
     # End-of-game user choices & validation.
     choices = input("Please choose...\n"
-                    "1 to play again\n"
-                    "2 to quit playing\n")
+                    " \n"
+                    "1 \033[1;34mto play again\n\033[0;0m"
+                    "2 \033[1;34mto quit playing\n\033[0;0m")
 
     for choice in choices:
         if choice == "1":
             game(username)
         elif choice == "2":
             print()
-            print(f"Thanks for playing, {username}!\n")
+            print(f"\033[0;33mThanks for playing, {username}!\n\033[0;0m")
             main()
         else:
             print()
-            print("Please enter a valid response!\n")
+            print("\033[1;31mPlease enter a valid response!\n\033[0;0m")
             continue
 
 
@@ -153,69 +157,73 @@ def game(username: str, wallet: int = 100):
         turns = 0
         maxcredits = 0
 
-        while wallet > 0:
-            print()
-            print(f"Hey {username}, you have {wallet} credits "
+        while wallet > 0:   # Continuous loop while user has credit.
+            print()   # Greet user and inform them of the game conditions.
+            print(f"\033[0;33mHey {username}, you have {wallet} credits "
                   "in your wallet!\n"
-                  "Minimum wager is 10 credits.\n")
-            try:   # Integer wager value input from user & validate.
+                  "Minimum wager is 10 credits.\n\033[0;0m")
+            try:   # Get wager integer value from user input & validate.
                 wager = int(input("How much would you like to wager..? \n"))
-            except ValueError:
-                print("Please wager a whole number of credits.\n")
+            except ValueError:   # Check wager is a whole number.
+                print("\033[1;31mPlease wager a whole number "
+                      "of credits.\n\033[0;0m")
                 continue
-            if wager > wallet:   # Check credits available.
-                print("Insufficient credits!\n")
+            if wager > wallet:   # Check credits are available.
+                print("\033[1;31mInsufficient credits!\n\033[0;0m")
                 continue
             elif wager < 0:   # Check wager is +ve.
-                print("Please enter a positive number!\n")
+                print("\033[1;31mPlease enter a positive number!\n\033[0;0m")
                 continue
-            elif wager < 10:   # Check minimum wager value met.
-                print("Minimum wager is 10 credits!\n")
+            elif wager < 10:   # Check minimum wager value is met.
+                print("\033[1;31mMinimum wager is 10 credits!\n\033[0;0m")
                 continue
-            else:   # Increment turns & deduct wager from wallet.
+            else:   # Increment turns/deduct wager from wallet/randomise reels.
                 turns += 1
                 wallet -= wager
                 reel_1 = random.choice(SYMBOLS)
                 reel_2 = random.choice(SYMBOLS)
                 reel_3 = random.choice(SYMBOLS)
 
-            # Spin the reels!
+            # Spin the reels! Output randomised reels result.
             print()
-            print("   ••••••••••••••••••••••••••••••")
+            print("\033[1;34m   ••••••••••••••••••••••••••••••")
             print(f"  •        | {random.choice(SYMBOLS)} "
                   f"| {random.choice(SYMBOLS)} |"
                   f" {random.choice(SYMBOLS)} |         •")
             print(" •         —————————————          •")
-            print(f"•    WIN • | {reel_1} | {reel_2} | {reel_3} | • LINE    •")
+            print(f"•\033[0;0m    WIN • | {reel_1} | {reel_2} "
+                  f"| {reel_3} | • LINE    \033[1;34m•")
             print(" •         —————————————          •")
             print(f"  •        | {random.choice(SYMBOLS)} "
                   f"| {random.choice(SYMBOLS)} |"
                   f" {random.choice(SYMBOLS)} |         •")
-            print("   ••••••••••••••••••••••••••••••")
+            print("   ••••••••••••••••••••••••••••••\033[0;0m")
             print()
 
             # Check result, calc winnings & update wallet as required.
             if reel_1 == reel_2 and reel_2 == reel_3:
                 winnings = wager * 3
-                print(f"Awesome, you matched three and won"
-                      f" {winnings} credits!\n")
+                print(f"\033[1;32mAwesome, you matched three and won"
+                      f" {winnings} credits!\n\033[0;0m")
                 wallet += winnings
             elif reel_1 == reel_2 or reel_2 == reel_3:
                 winnings = wager * 2
-                print(f"Not bad, you matched two and won"
-                      f" {winnings} credits!\n")
+                print(f"\033[1;36mNot bad, you matched two and won"
+                      f" {winnings} credits!\n\033[0;0m")
                 wallet += winnings
             else:
-                print("Unlucky, you lost that spin.\n")
+                print("\033[1;31mUnlucky, you lost that spin.\n\033[0;0m")
 
             # Check and update maxcredits value as required.
             if wallet > maxcredits:
                 maxcredits = wallet
 
-            print(f"You have played {turns} games and held a maximum of "
-                  f"{maxcredits} credits...\n")
+            # Keeps user informed of game progress.
+            print(f"\033[1;33mYou have played {turns} games and held a "
+                  f"maximum of {maxcredits} credits...\n\033[0;0m")
 
-        print(f"\nSorry {username}, you're broke! :(\n")
+        # End-of-game message.
+        print(f"\n\033[1;33mSorry {username}, you're broke! :(\n\033[0;0m")
 
         # Collate user data for current game & append to gsheet.
         user_score = [username, maxcredits, turns]
@@ -224,9 +232,10 @@ def game(username: str, wallet: int = 100):
 
         # End-of-game user choices & validation.
         choices = input("Please choose...\n"
-                        "1 to play again\n"
-                        "2 to see best players\n"
-                        "3 to quit playing\n")
+                        " \n"
+                        "1 \033[1;34mto play again\n\033[0;0m"
+                        "2 \033[1;34mto see best players\n\033[0;0m"
+                        "3 \033[1;34mto quit playing\n\033[0;0m")
 
         for choice in choices:
             if choice == "1":
@@ -235,11 +244,11 @@ def game(username: str, wallet: int = 100):
                 get_best_players(username)
             elif choice == "3":
                 print()
-                print(f"Thanks for playing, {username}!\n")
+                print(f"\033[0;33mThanks for playing, {username}!\n\033[0;0m")
                 main()
             else:
                 print()
-                print("Please enter 1, 2, or 3!\n")
+                print("\033[1;31mPlease enter 1, 2, or 3!\n\033[0;0m")
                 continue
 
     return None
