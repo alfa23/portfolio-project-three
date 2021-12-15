@@ -53,7 +53,6 @@ def introduction():
     This method is called when an introduction
     is required (new game start).
     """
-    print("\n        ...ENUMERATING SCORES DATABASE...\n")
     print(
           "\033[1;34m    #########• T H E   P Y T H O N •#########\n"
           "    #                                       #\n"
@@ -85,14 +84,15 @@ def introduction():
     print("\033[1;34m••••••••••••••••••••••••••••••••••••"
           "•••••••••••••••••••••••\n"
           " MATCH TWO SYMBOLS:\n"
-          "\033[1;32m €€- / ££- / $$- / ¥¥-\033[0;0m or "
+          "\033[1;32m €€- / ££- / $$- / ¥¥-\033[3;34m  or  \033[0;0m"
           "\033[1;32m-€€ / -££ / -$$ / -¥¥\n"
           "\033[1;34m WIN WAGER x2!\n")
     print(" MATCH THREE SYMBOLS:\n"
           " \033[1;32m€€€ / £££ / $$$ / ¥¥¥\n"
           "\033[1;34m WIN WAGER x3!\n"
-          "•••••••••••••••••••••••••••••••••••••••••••••••"
-          "••••••••••••\n\033[0;0m")
+          "•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••\n"
+          "••••••••••••••••\033[1;32mENUMERATING SCORES DATABASE"
+          "\033[1;34m••••••••••••••••\n\033[0;0m")
 
 
 def get_best_players(username):
