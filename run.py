@@ -9,11 +9,13 @@ copied & modified from Love Sandwiches project.)
 Declare global symbol vars for the game.
 """
 
+# External libraries imported to enhance program functionality
 import re
 import random
 import gspread
 from google.oauth2.service_account import Credentials
 
+# SCOPE code & constants ammended & borrowed from Love Sandwiches
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -25,6 +27,11 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_bandits')
 SYMBOLS = ["€", "£", "$", "¥"]
+
+"""
+All code below originated by Paul Whiteside. Any external
+references & exceptions are detailed in the project README.md
+"""
 
 
 def get_username():
@@ -54,7 +61,7 @@ def introduction():
     is required (new game start).
     """
     print(
-          "\033[1;34m    #########• T H E   P Y T H O N •#########\n"
+          "\n\033[1;34m    #########• T H E   P Y T H O N •#########\n"
           "    #                                       #\n"
           "    #   #     ##   ###   #   #  ####  ###   #\n"
           "    #  ##    #  #  #  #  ## ##  #     #  #  #\n"
@@ -69,6 +76,8 @@ def introduction():
           "    #  ###   #  #  #   #  ###   ###    #    #\n"
           "    #                                       #\n"
           "    #########################################\n\033[0;0m")
+    empty_input = input("\033[3;34m           > Press enter to "
+                        "continue >\n\033[0;0m")
     print(" \033[4;33mhttps://en.wiktionary.org/wiki/one-armed_bandit:\n")
     print('\033[0;33m From one-armed (“having only one arm”) + bandit (“one\n'
           ' who robs others in a lawless area, especially as part\n'
@@ -81,6 +90,8 @@ def introduction():
           " certain combinations of symbols line up on these reels.\n")
     print("\033[3;33m AKA: Fruit machine, poker machine,"
           " slot machine.\n\033[0;0m")
+    empty_input = input("\033[3;34m           > Press enter to "
+                        "continue >\n\033[0;0m")
     print("\033[1;34m••••••••••••••••••••••••••••••••••••"
           "•••••••••••••••••••••••\n"
           " MATCH TWO SYMBOLS:\n"
@@ -93,6 +104,8 @@ def introduction():
           "•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••\n"
           "••••••••••••••••\033[1;32mENUMERATING SCORES DATABASE"
           "\033[1;34m••••••••••••••••\n\033[0;0m")
+
+    return empty_input
 
 
 def get_best_players(username):
@@ -126,25 +139,25 @@ def get_best_players(username):
     print(f"{lp_name} has the longest play streak, with"
           f" {lp_turns} games played!\n\033[0;0m"
           "\n\033[1;32mThe scores database has been updated with your"
-          " latest score...\n\033[0;0m")
+          " latest score...\n\033[0;0m"
+          "\n\033[1;34mPlay some more and try to beat the all-time"
+          " scores!\n\033[0;0m")
 
     # End-of-game user choices & validation.
-    choices = input("Please choose...\n"
-                    " \n"
-                    "1 \033[1;34mto play again\n\033[0;0m"
-                    "2 \033[1;34mto quit playing\n\033[0;0m")
-
-    for choice in choices:
-        if choice == "1":
-            game(username)
-        elif choice == "2":
-            print()
-            print(f"\033[0;33mThanks for playing, {username}!\n\033[0;0m")
-            main()
-        else:
-            print()
-            print("\033[1;31mPlease enter a valid response!\n\033[0;0m")
-            continue
+    choice = input("Please enter...\n"
+                   " \n"
+                   "1 \033[1;34mto play again\n\033[0;0m"
+                   "2 \033[1;34mto quit playing\n\033[0;0m")
+    while choice not in ["1", "2"]:
+        print()
+        print("\033[1;31mPlease enter a valid response!\n\033[0;0m")
+        break
+    if choice == "1":
+        game(username)
+    elif choice == "2":
+        print()
+        print(f"\033[0;33mThanks for playing, {username}!\n\033[0;0m")
+        main()
 
 
 def game(username: str, wallet: int = 100):
@@ -220,8 +233,12 @@ def game(username: str, wallet: int = 100):
                 maxcredits = wallet
 
             # Keeps user informed of game progress.
-            print(f"\033[1;33mYou have played {turns} games and held a "
-                  f"maximum of {maxcredits} credits...\n\033[0;0m")
+            if turns > 1:
+                print(f"\033[1;33mYou have played {turns} games and held a "
+                      f"maximum of {maxcredits} credits...\n\033[0;0m")
+            else:
+                print(f"\033[1;33mYou have played {turns} game and held a "
+                      f"maximum of {maxcredits} credits...\n\033[0;0m")
 
         # End-of-game message.
         print(f"\n\033[1;33mSorry {username}, you're broke! :(\n\033[0;0m")
@@ -232,25 +249,24 @@ def game(username: str, wallet: int = 100):
         scoreboard.append_row(user_score)
 
         # End-of-game user choices & validation.
-        choices = input("Please choose...\n"
-                        " \n"
-                        "1 \033[1;34mto play again\n\033[0;0m"
-                        "2 \033[1;34mto see best players\n\033[0;0m"
-                        "3 \033[1;34mto quit playing\n\033[0;0m")
+        choice = input("Please enter...\n"
+                       " \n"
+                       "1 \033[1;34mto play again\n\033[0;0m"
+                       "2 \033[1;34mto see best players\n\033[0;0m"
+                       "3 \033[1;34mto quit playing\n\033[0;0m")
 
-        for choice in choices:
-            if choice == "1":
-                game(username)
-            elif choice == "2":
-                get_best_players(username)
-            elif choice == "3":
-                print()
-                print(f"\033[0;33mThanks for playing, {username}!\n\033[0;0m")
-                main()
-            else:
-                print()
-                print("\033[1;31mPlease enter 1, 2, or 3!\n\033[0;0m")
-                continue
+        while choice not in ["1", "2", "3"]:
+            print()
+            print("\033[1;31mPlease enter 1, 2, or 3!\n\033[0;0m")
+            break
+        if choice == "1":
+            game(username)
+        elif choice == "2":
+            get_best_players(username)
+        elif choice == "3":
+            print()
+            print(f"\033[0;33mThanks for playing, {username}!\n\033[0;0m")
+            main()
 
     return None
 
