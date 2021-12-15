@@ -34,7 +34,8 @@ def get_username():
     """
     introduction()
     while True:
-        username = input("Enter your name to play (max. 8 letters): \n")
+        username = input("\033[1;34mEnter your name to play "
+                         "(max. 8 letters): \n\033[0;0m")
         if not re.match("^[A-Z, a-z]*$", username):
             print("\n\033[1;31mError! Only letters allowed!\n\033[0;0m")
             continue
