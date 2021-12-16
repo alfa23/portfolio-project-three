@@ -318,10 +318,10 @@ I am pleased to say that the application is, to the best of my knowledge followi
   
   • *Issue:* Whilst playtesting during development it was discovered that "just pressing Enter" for username input wasn't being caught and allowed game continuation with a blank username...
   
-  • *Fixed:* After much coding experimentation, followed by many fruitless googles, I eventually discovered this Stack Overflow thread: https://stackoverflow.com/questions/8761778/limiting-python-input-strings-to-certain-characters-and-lengths, which contained an example of regular expressions and use of the re import. Method and code base was borrowed, ammended and utilised within the username validation process.
+  • *Fixed:* After much coding experimentation, followed by many fruitless googles, I eventually discovered this Stack Overflow thread: https://stackoverflow.com/questions/8761778/limiting-python-input-strings-to-certain-characters-and-lengths, which contained an example of using regular expressions and the re import. Method and base code was borrowed from here, ammended and utilised within the username validation process.
 
 
-[Back to top ⇧](#the-python-one-armed-bandit)
+[Back to top ⇧](#)
 
 
 ## DEPLOYMENT

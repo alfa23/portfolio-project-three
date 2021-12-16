@@ -43,7 +43,8 @@ def get_username():
     while True:
         username = input("\033[1;34mEnter your name to play "
                          "(max. 8 letters): \n\033[0;0m")
-        if not re.match("^[A-Z, a-z]*$", username):
+        # Following if statement code repurposed from a Stack Overflow thread
+        if not re.match("^[A-Z, a-z]*$", username):   # See README for details
             print("\n\033[1;31mError! Only letters allowed!\n\033[0;0m")
             continue
         elif len(username) < 1 or len(username) > 8:
