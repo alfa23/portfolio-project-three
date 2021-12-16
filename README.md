@@ -1,26 +1,36 @@
-ToC HERE
-
-----
-
-
-# **INTRODUCTION**
+# **The Python One-Armed Bandit**
 
 
 ----
 
 
-![Python One Armed Bandit header](readme_media/)
+![Python One Armed Bandit header](assets/readme/game_screens/pp03_intro-1_head_gfx.png)
+
+The Python One-Armed-Bandit...
+
+Visit the deployed application [here](https://python-bandit.herokuapp.com/).
 
 
-# User Experience (UX) 
+## Table of Contents
 
 
-## PROJECT GOALS
+----
 
-**Python Bandit** aims to cater for... 
+PASTE ToC HERE
 
 
-## External User Goals: User Stories: 
+***
+
+
+## User Experience (UX) 
+
+
+### PROJECT GOALS
+
+• **Python Bandit** aims to cater for... 
+
+
+### External User Goals: User Stories: 
 
 - As a user, I want 
 - As a user, I want
@@ -31,7 +41,7 @@ ToC HERE
   - Responsive: access site easily on any device
 
 
-## Site Owner Goals:
+### Site Owner Goals:
 
 - Develop a simple interactive game of chance that runs in the CLI 
 - Give users the option to continue playing after the initial execution/first game
@@ -43,7 +53,7 @@ ToC HERE
   -  
 
 
-## Features To Include:
+### Features To Include:
 
 -  
 - 
@@ -52,21 +62,21 @@ ToC HERE
 ----
 
 
-# FLOWCHART
+## FLOWCHART
 
 
-![LucidChart](readme_media/) 
+![Flowchart](assets/readme) 
 
-Flowchart generated in [LucidChart](https://)
+Flowchart generated in [LucidChart](https://lucidchart.com/)
 
 
 ---- 
 
 
-# DESIGN CHOICES
+## DESIGN CHOICES
 
 
-## Colours
+### Colours
 
 To provide a better user experience the decision was taken to add colour, which was applied by utilising the built-in ASCI Escape Sequence syntax. White copy was retained for highlighting user input points and the reel win line.
 
@@ -88,17 +98,17 @@ Other colours used were:
 ----
 
 
-# TECHNOLOGIES
+## TECHNOLOGIES
 
 During the course of this project I have utilised the following technologies:
 
 
-## Languages
+### Languages
 
-- [**Python**](https://www.javascript.com/) was used to build the application
+- [**Python**](https://www.python.org/) was used to build the application
 
 
-## Tools
+### Tools
 
 - [**Git**](https://git-scm.com/) was used for version control (commit to Git and push to GitHub)
 
@@ -106,47 +116,30 @@ During the course of this project I have utilised the following technologies:
 
 - [**GitHub**](https://github.com/) was used to create the repository and store the project's code after being pushed from Git
 
-- [**LucidChart**](https://) used to generate project flowchart
+- [**LucidChart**](https://lucidchart.com/) used to generate project flowchart
 
-- [**Google Cloud Platform**](https://) used to connect & configure the APIs used in the project; specifically for Google Drive and Google Sheets integration, including generation of the required creds.json file
+- [**Google Cloud Platform**](https://cloud.google.com/) used to connect & configure the APIs used in the project; specifically for Google Drive and Google Sheets integration, including generation of the required creds.json file
 
 - [**amiresponsive**](http://ami.responsivedesign.is/) used to check how responsive the application is on different devices
 
-- [**PEP8**](https://), [**Python Validator**](https://validator.w3.org/) used to validate all Python source code
+- [**PEP8**](http://pep8online.com/) **Python Validator** used to validate all Python source code
 
-- [**Heroku**](https://) used to configure and deploy the final project
+- [**Heroku**](https://heroku.com/) used to configure and deploy the final project
 
 
 ----
 
 
-# FEATURES
+## FEATURES
 
 
-## Background info & Introduction
+### Background info & Introduction
 
-![Intro Header](readme_media/)
+![Intro Header](assets/)
 
-![Intro Copy](readme_media/)
+![Intro Copy](assets/)
 
-![Intro Footer](readme_media/)
-
-  - 
-      
-      • 
-  
-  - 
-
-      • 
-
-
-## Game Loop
-
-![Image](readme_media/)
-
-![Image](readme_media/)
-
-![Image](readme_media/)
+![Intro Footer](assets/)
 
   - 
       
@@ -157,30 +150,13 @@ During the course of this project I have utilised the following technologies:
       • 
 
 
-## Game Loop
+### Game Loop
 
-![Image](readme_media/)
+![Image](assets/)
 
-![Image](readme_media/)
+![Image](assets/)
 
-![Image](readme_media/)
-
-  - 
-      
-      • 
-  
-  - 
-
-      • 
-
-
-## Game Loop
-
-![Image](readme_media/)
-
-![Image](readme_media/)
-
-![Image](readme_media/)
+![Image](assets/)
 
   - 
       
@@ -191,13 +167,13 @@ During the course of this project I have utilised the following technologies:
       • 
 
 
-## Game Loop
+### End-of-Game User Choices
 
-![Image](readme_media/)
+![Image](assets/)
 
-![Image](readme_media/)
+![Image](assets/)
 
-![Image](readme_media/)
+![Image](assets/)
 
   - 
       
@@ -208,19 +184,19 @@ During the course of this project I have utilised the following technologies:
       • 
 
 
-## *Features to Implement*
+### *Features to Implement*
 
 - 
 
 ----
 
 
-# VERSION CONTROL
+## VERSION CONTROL
 
 Managed within **GitHub** and **Gitpod** via regular commits pushed to GitHub remote servers:
 
 
-## Gitpod Workspaces
+### Gitpod Workspaces
 1. Starting from GitHub, clone the Code Institute template by clicking Use This Template and copying to my repo. Launch Workspace by clicking GitPod button - this action is only performed once and the workspace is subsequently reopened through GitPod.
 
 2. Start the Gitpod Workspace which opens an online IDE editor window.
@@ -232,52 +208,45 @@ Managed within **GitHub** and **Gitpod** via regular commits pushed to GitHub re
 4. Meaningful commit messages allow easy roll-back of any changes to earlier versions.
 
 
-# TESTING 
+## TESTING 
 
-## Testing External User Goals & Stories
+### Testing External User Goals & Stories
 
-
-## Aut TESTING
-
-
-## PEP8 Validator Testing 
-
-- Python
-  - No errors were returned when passing through the [PEP8 validator](https://)
-
-![PEP8](readme_media/)
+- 
 
 
-## Response Testing
+### Code Validation 
+
+Python
+
+- No errors were returned when passing through the [PEP8 validator](https://)
+
+![PEP8](assets/)
+
+
+### Response Testing
 
 In order to test responsiveness to all device sizes, I used [amiresponsive](http://ami.responsivedesign.is/)
 
-![amiresponsive](readme_media/)
+![amiresponsive](assets/)
 
 
-## MANUAL TESTING
+### Manual Testing
 
 
 | FEATURE | OUTCOME | EXAMPLE | PASS/FAIL |
 |---|---|:---:|:---:|
-| Name Input | Validate value is | ![image](readme_media/) | PASS |
-| Name Input | Validate value is | ![image](readme_media/) | PASS |
-| Name Input | Validate value is | ![image](readme_media/) | PASS |
-| Name Input | Validate value is | ![image](readme_media/) | PASS |
-| Name Input | Validate value is | ![image](readme_media/) | PASS |
-| Name Input | Validate value is | ![image](readme_media/) | PASS |
-| Name Input | Validate value is | ![image](readme_media/) | PASS |
-| Name Input | Validate value is | ![image](readme_media/) | PASS |
+| Name Input | Validate value is | ![image](assets/) | PASS |
+| Name Input | Validate value is | ![image](assets/) | PASS |
+| Name Input | Validate value is | ![image](assets/) | PASS |
+| Name Input | Validate value is | ![image](assets/) | PASS |
+| Name Input | Validate value is | ![image](assets/) | PASS |
+| Name Input | Validate value is | ![image](assets/) | PASS |
+| Name Input | Validate value is | ![image](assets/) | PASS |
+| Name Input | Validate value is | ![image](assets/) | PASS |
 
 
-## BUGS and FIXES
-
-
-### **Bug:** title
-  
-  • *Issue:* 
-  
-  • *Fixed:* 
+## BUGS & FIXES
 
 
 ### **Bug:** title
@@ -294,7 +263,17 @@ In order to test responsiveness to all device sizes, I used [amiresponsive](http
   • *Fixed:* 
 
 
-# DEPLOYMENT
+### **Bug:** title
+  
+  • *Issue:* 
+  
+  • *Fixed:* 
+
+
+[Back to top ⇧](#the-python-one-armed-bandit)
+
+
+## DEPLOYMENT
 
 **Heroku** was used to deploy the final application by following these steps:
 
