@@ -4,9 +4,8 @@
 ----
 
 
-![Python One Armed Bandit header](assets/readme/game_screens/pp03_intro-1_head_gfx.png)
+![HEADER LOGO](assets/readme/game_screens/pp03_intro-1_head_gfx.jpg)
 
-The Python One-Armed-Bandit...
 
 Visit the deployed application [here](https://python-bandit.herokuapp.com/).
 
@@ -25,18 +24,7 @@ PASTE ToC HERE
 ## USER EXPERIENCE (UX) 
 
 
-### Project Goals
-
-- To deploy a command-line application to a cloud-based platform.
-- To create an online game of chance that is easy and fun play.
-- To ensure the game runs in a smooth loop, allowing users to play as many times as they wish.
-- To provide a positive UX by ensuring users are kept informed of their current in-game status.
-- To provide a positive UX by ensuring that any user input errors are effectively dealt with.
-- To include a process to track/record the best user scores for the game & display the all-time best.
-
-
-
-### External User Goals: User Stories: 
+### External User Goals: User Stories
 
 - As a user, I want an easy-to-pick-up yet challeging game of chance to pass time online.
 - As a user, I want to easily identify the input required for each step.
@@ -46,6 +34,16 @@ PASTE ToC HERE
 
   Additional ***user expectations*** for consideration include:
   - Responsive: access site easily on any device
+
+
+### Project Goals
+
+- To deploy a command-line application to a cloud-based platform.
+- To create an online game of chance that is easy and fun play.
+- To ensure the game runs in a smooth loop, allowing users to play as many times as they wish.
+- To provide a positive UX by ensuring users are kept informed of their current in-game status.
+- To provide a positive UX by ensuring that any user input errors are effectively dealt with.
+- To include a process to track/record the best user scores for the game & display the all-time best.
 
 
 ----
@@ -85,6 +83,7 @@ Other colours used were:
 
 ASCI process and syntax informed by & referenced from: https://stackabuse.com/how-to-print-colored-text-in-python/
 
+
 ----
 
 
@@ -108,7 +107,7 @@ During the course of this project I have utilised the following technologies:
 
 - [**LucidChart**](https://lucidchart.com/) used to generate project flowchart.
 
-- [**Google Cloud Platform**](https://cloud.google.com/) was used to connect & configure the APIs used in the project; specifically for Google Drive and Google Sheets integration, including generation of the required creds.json file.
+- [**Google Cloud Platform**](https://cloud.google.com/) was used to connect & configure the APIs used in the project; specifically for Google Drive and Google Sheets integration, including generation of the required credentials file (creds.json).
 
 - [**amiresponsive**](http://ami.responsivedesign.is/) was used to check how responsive the application is on different devices.
 
@@ -127,92 +126,72 @@ During the course of this project I have utilised the following technologies:
 
 ![Intro Header](assets/readme/game_screens/pp03_intro-1_head_gfx.jpg)
 
+- 
+
+
 ![Intro Copy](assets/readme/game_screens/pp03_intro-2_mid_copy.jpg)
+
+- 
+  
 
 ![Intro Footer](assets/readme/game_screens/pp03_intro-3_lower.jpg)
 
-  - 
-      
-      • 
-  
-  - 
-
-      • 
+- 
 
 
 ### Game Loop
 
 ![Username & first wager](assets/readme/game_screens/pp03_gameloop-1_name.jpg)
 
-  - 
+- 
       
-      • 
   
 ![The reels](assets/readme/game_screens/pp03_gameloop-2_reels.jpg)
 
-  - 
+- 
       
-      • 
   
 ![Losing reels](assets/readme/game_screens/pp03_gameloop-2a_loss.jpg)
 
-  - 
-
-      • 
+- 
 
 
 ![Win x2 reels](assets/readme/game_screens/pp03_gameloop-3_winx2.jpg)
 
-  - 
-
-      • 
+- 
 
 
 ![Win x3 reels](assets/readme/game_screens/pp03_gameloop-4_winx3.jpg)
 
-  - 
-
-      • 
+- 
 
 
 ![You're broke](assets/readme/game_screens/pp03_gameloop-5_broke.jpg)
 
-  - 
-
-      • 
+- 
 
 
 ### End-of-Game User Choices
 
 ![EoG user choices](assets/readme/game_screens/pp03_gameloop-6_eog_choices.jpg)
 
-  - 
-
-      • 
-
+- 
 
 
 ![EoG play again](assets/readme/game_screens/pp03_gameloop-7_play_again.jpg)
 
-  - 
-
-      • 
-
+- 
 
 
 ![EoG best players](assets/readme/game_screens/pp03_gameloop-8_best_players.jpg)
 
-  - 
+- 
       
-      • 
-
 
 ![EoG quit playing](assets/readme/game_screens/pp03_gameloop-8_best_players.jpg)
 
-  - 
+- 
       
-      • 
-
 
 ### *Features to Implement*
 
