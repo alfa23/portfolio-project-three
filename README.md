@@ -27,10 +27,13 @@ PASTE ToC HERE
 
 ### Project Goals
 
-- To create a command-line game of chance that is easy to navigate and fun play.
-- The game runs in a smooth loop, allowing users to play as many times as they wish.
-- To keep users informed of their current-game status.
-- To provide users with a goal/incentive to have "just one more go"...
+- To deploy a command-line application to a cloud-based platform.
+- To create an online game of chance that is easy and fun play.
+- To ensure the game runs in a smooth loop, allowing users to play as many times as they wish.
+- To provide a positive UX by ensuring users are kept informed of their current in-game status.
+- To provide a positive UX by ensuring that any user input errors are effectively dealt with.
+- To include a process to track/record the best user scores for the game & display the all-time best.
+
 
 
 ### External User Goals: User Stories: 
@@ -43,15 +46,6 @@ PASTE ToC HERE
 
   Additional ***user expectations*** for consideration include:
   - Responsive: access site easily on any device
-
-
-### Site Owner Goals:
-
-- Develop a simple interactive game of chance that runs in the CLI.
-- Give users the option to continue playing after the initial execution/first game.
-- Provide a positive UX by ensuring users are kept informed with game info.
-- Provide a positive UX by ensuring that any user input errors are effectively dealt with.
-- Include a process to track/record the best user scores for the game & display the all-time best.
 
 
 ----
@@ -89,6 +83,7 @@ Other colours used were:
 
   The value of 1 in the examples above denote bold styling; variations of this value were utilised to achieve different text styles, specifically 3 for italics, 4 for underlines and 0 for resetting (normal-ising) text.
 
+ASCI process and syntax informed by & referenced from: https://stackabuse.com/how-to-print-colored-text-in-python/
 
 ----
 
@@ -247,15 +242,25 @@ Managed within **GitHub** and **Gitpod** via regular commits pushed to GitHub re
 
 ### Testing Project Goals
 
-- To create a command-line game of chance that is easy to navigate and fun play.
+- To deploy a command-line application to a cloud-based platform.
 
-- The game runs in a smooth loop, allowing users to play as many times as they wish.
+  ![App-in-window](assets/readme/game_screens/pp03_app_window.jpg)
 
-- To keep users informed of their current-game status.
+- To create an online game of chance that is easy and fun play.
 
-  - ![Game stats](assets/readme/game_screens/pp03_feat-_game_stats.jpg)
+  ![Simple scoring](assets/readme/game_screens/pp03_feat-1_scoring.jpg)
 
-- To provide users with a goal/incentive to have "just one more go"...
+- To ensure the game runs in a smooth loop, allowing users to play as many times as they wish.
+
+- To provide a positive UX by ensuring users are kept informed of their current in-game status.
+
+  ![Game stats](assets/readme/game_screens/pp03_feat-_game_stats.jpg)
+
+- To provide a positive UX by ensuring that any user input errors are effectively dealt with.
+
+- To include a process to track/record the best user scores for the game & display the all-time best.
+
+  ![Best players](assets/readme/game_screens/pp03_feat-3_best_players.jpg)
 
 
 
@@ -263,19 +268,16 @@ Managed within **GitHub** and **Gitpod** via regular commits pushed to GitHub re
 
 - As a user, I want an easy-to-pick-up yet challeging game of chance to pass time online.
 
+  ![Reels](assets/readme/game_screens/pp03_feat-2_reels.jpg)
 
 
 - As a user, I want to easily identify the input required for each step.
-
-  - ![Reels](assets/readme/game_screens/pp03_feat-2_reels.jpg)
 
 - As a user, I want to receive clear feedback in the case of erroneous inputs.
 
 - As a user, I want the option to play the game as many times as I wish.
 
 - As a user, I want to try and better the All-Time Bandit Buster score and see my name at the top!
-
-  - ![Best players](assets/readme/game_screens/pp03_feat-3_best_players.jpg)
 
 
 ### Code Validation 
@@ -305,31 +307,18 @@ In order to test responsiveness to all device sizes, I used [amiresponsive](http
 | Name Input | Validate value is | ![Wager3](assets/readme/mantest_screens/pp03_mantest-2c_wager_inputs.jpg) | PASS |
 | Name Input | Validate value is | ![EoG1](assets/readme/mantest_screens/pp03_mantest-3a_eog_main.jpg) | PASS |
 | Name Input | Validate value is | ![EoG2](assets/readme/mantest_screens/pp03_mantest-3b_eog_bp.jpg) | PASS |
-| Name Input | Validate value is | ![EoG3](assets/readme/mantest_screens/pp03_mantest-3c_eog_bug.jpg) | PASS |
+| Name Input | Validate value is | ![EoG3](assets/readme/mantest_screens/pp03_mantest-3c_eog_cat.jpg) | PASS |
 
 
 ## BUGS & FIXES
 
+I am pleased to say that the application is, to the best of my knowledge following extensive testing, currently bug-free! One of the main bugs I encountered during the development of this project involved preventing unexpected results by restricting the user from "just hitting Enter" during the username input event:
 
-### **Bug:** title
+### **Pressing Enter** during username input wasn't being caught...
   
-  • *Issue:* 
+  • *Issue:* Whilst playtesting during development it was discovered that "just pressing Enter" for username input wasn't being caught and allowed game continuation with a blank username...
   
-  • *Fixed:* 
-
-
-### **Bug:** title
-  
-  • *Issue:* 
-  
-  • *Fixed:* 
-
-
-### **Bug:** title
-  
-  • *Issue:* 
-  
-  • *Fixed:* 
+  • *Fixed:* After much coding experimentation, followed by many fruitless googles, I eventually discovered this Stack Overflow thread: https://stackoverflow.com/questions/8761778/limiting-python-input-strings-to-certain-characters-and-lengths, which contained an example of regular expressions and use of the re import. Method and code base was borrowed, ammended and utilised within the username validation process.
 
 
 [Back to top ⇧](#the-python-one-armed-bandit)
@@ -363,13 +352,13 @@ Much appreciation and thanks to my mentor, Marcel Mulders, for his continued adv
 
 ## Content
 
-• **Example** sourced from: https://
+• **One-Armed Bandit copy & info** sourced from: https://en.wiktionary.org/wiki/one-armed_bandit
 
-• **Example** sourced from: https://
+• **ASCI color theory & syntax** referenced from: https://stackabuse.com/how-to-print-colored-text-in-python/
 
-• **Example** sourced from: https://
+• **Refresh of Python dictionary knowledge** referenced from: https://www.geeksforgeeks.org/python-get-the-first-key-in-dictionary/?ref=rp
 
-• **Example** sourced from: https://
+• **Input validation for catching just hitting Enter** utilises code sourced & repurposed from: https://stackoverflow.com/questions/8761778/limiting-python-input-strings-to-certain-characters-and-lengths
 
 • **Google Cloud Platform** process for activating APIs and obtaing creds.json was achieved by re-referencing & revisiting the Love Sandwiches project.
 
