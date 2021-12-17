@@ -81,7 +81,7 @@ Other colours used were:
 
   The value of 1 in the examples above denote bold styling; variations of this value were utilised to achieve different text styles, specifically 3 for italics, 4 for underlines and 0 for resetting (normal-ising) text.
 
-ASCI process and syntax informed by & referenced from: https://stackabuse.com/how-to-print-colored-text-in-python/
+ASCI EscSeq process and syntax informed by & referenced from: https://stackabuse.com/how-to-print-colored-text-in-python/
 
 
 ----
@@ -89,7 +89,7 @@ ASCI process and syntax informed by & referenced from: https://stackabuse.com/ho
 
 ## TECHNOLOGIES
 
-During the course of this project I have utilised the following technologies:
+During the course of this project the following technologies were utilised:
 
 
 ### Languages
@@ -122,70 +122,84 @@ During the course of this project I have utilised the following technologies:
 ## FEATURES
 
 
-### Background info & Introduction
+### Introduction & Background Information
 
 ![Intro Header](assets/readme/game_screens/pp03_intro-1_head_gfx.jpg)
 
-- 
+- Chip-art header logo announcing the chosen game of chance - to those users old enough to know the term... Program suspends awaitng user input to continue.
 
 
 ![Intro Copy](assets/readme/game_screens/pp03_intro-2_mid_copy.jpg)
 
-- 
-  
+- Wikipedia reference used as explainer for base concept of the game and the application name's origin, for all the rest of those users not old enough to know the term! Program suspends awaitng user input to continue.
+
 
 ![Intro Footer](assets/readme/game_screens/pp03_intro-3_lower.jpg)
 
-- 
+- Informs user of the conditions of the game. Introduces the symbol set used to play the game (based on units of currency: €, £, $ and ¥) and details the winning combinations and their respective rewards. Added 'Enumerating Scores Database' copy to subtly hint to user that there is a mechanism for recording game scores. Awaits first user input: Enter their name if they want to play...
 
 
 ### Game Loop
 
 ![Username & first wager](assets/readme/game_screens/pp03_gameloop-1_name.jpg)
 
-- 
+- Successful submission of username (see: Manual Testing) initiates main game loop:
+
+  - User is informed of their starting wallet balance and minimum wager condition (10 credits).
+
+  - Awaits user input of initial wager...
       
   
 ![The reels](assets/readme/game_screens/pp03_gameloop-2_reels.jpg)
 
-- 
-      
+- Successful submission of wager amount (see: Manual Testing) initiates selection of three random 'winning' reels. The user's wallet balance has the wager value deducted and is updated. Turns value is incremented by 1.
+
+- The random reels result is compared to the winning conditions and, if required, rewards are calculated and ammended to the wallet value.
+
+- The random reels are displayed to the user in a simple digital facsimilie of a one-armed bandit's reels with the win-line highlighted in white, out of the surrounding blue.
+
   
-![Losing reels](assets/readme/game_screens/pp03_gameloop-2a_loss.jpg)
+  ![Losing reels](assets/readme/game_screens/pp03_gameloop-2a_loss.jpg)
 
-- 
-
-
-![Win x2 reels](assets/readme/game_screens/pp03_gameloop-3_winx2.jpg)
-
-- 
+    - Below losing reels a commiseratory message to the user is displayed in red text.
 
 
-![Win x3 reels](assets/readme/game_screens/pp03_gameloop-4_winx3.jpg)
+  ![Win x2 reels](assets/readme/game_screens/pp03_gameloop-3_winx2.jpg)
 
-- 
+    - Below x2 win reels a congratulatory message to the user is displayed in cyan text. The wager amount is doubled and ammended to the user's wallet value.
 
 
-![You're broke](assets/readme/game_screens/pp03_gameloop-5_broke.jpg)
+  ![Win x3 reels](assets/readme/game_screens/pp03_gameloop-4_winx3.jpg)
 
-- 
+    - Below x3 win reels a congratulatory message to the user is displayed in green text. The wager amount is tripled and ammended to the user's wallet value.
+
+
+- Yellow text is used to inform the user of current number of games played and maximum credits held.
+
+- Then, while the user still has credits in their wallet, the game loop resets: The user is informed of their updated credit balance, reminded of the minimum wager and asked for their next wager amount. This loop will continues for as long as the user has credits to spin.
 
 
 ### End-of-Game User Choices
 
-![EoG user choices](assets/readme/game_screens/pp03_gameloop-6_eog_choices.jpg)
+![You're broke](assets/readme/game_screens/pp03_gameloop-5_broke.jpg)
 
-- 
+- When the user eventually runs out of credits, a yellow-text-informative message apologises and lets them know they're broke. Users are then asked to choose from three numbered options: 1, play again; 2, see best players and 3, quit playing.
+
+- Successful submission of a choice (see: Manual Testing) initiates: 
+
+  ![EoG user choices](assets/readme/game_screens/pp03_gameloop-6_eog_choices.jpg)
+
+  - 
 
 
-![EoG play again](assets/readme/game_screens/pp03_gameloop-7_play_again.jpg)
+  ![EoG play again](assets/readme/game_screens/pp03_gameloop-7_play_again.jpg)
 
-- 
+  - 
 
 
-![EoG best players](assets/readme/game_screens/pp03_gameloop-8_best_players.jpg)
+  ![EoG best players](assets/readme/game_screens/pp03_gameloop-8_best_players.jpg)
 
-- 
+  - 
       
 
 ![EoG quit playing](assets/readme/game_screens/pp03_gameloop-8_best_players.jpg)
