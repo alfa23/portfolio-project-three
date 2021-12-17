@@ -1,4 +1,4 @@
-# **The Python One-Armed Bandit**
+# The Python One-Armed Bandit
 
 
 ----
@@ -15,10 +15,44 @@ Visit the deployed application [here](https://python-bandit.herokuapp.com/).
 
 ----
 
-PASTE ToC HERE
+- [The Python One-Armed Bandit](#the-python-one-armed-bandit)
+  * [Table of Contents](#table-of-contents)
+  * [USER EXPERIENCE (UX)](#user-experience--ux-)
+    + [External User Goals: User Stories](#external-user-goals--user-stories)
+    + [Project Goals](#project-goals)
+  * [FLOWCHART](#flowchart)
+  * [[Back to top ⇧](#)](#-back-to-top------)
+  * [DESIGN CHOICES](#design-choices)
+    + [Colours](#colours)
+  * [TECHNOLOGIES](#technologies)
+    + [Languages](#languages)
+    + [Tools](#tools)
+  * [[Back to top ⇧](#)](#-back-to-top-------1)
+  * [FEATURES](#features)
+    + [Introduction & Background Information](#introduction---background-information)
+    + [Game Loop](#game-loop)
+    + [End-of-Game User Choices](#end-of-game-user-choices)
+  * [VERSION CONTROL](#version-control)
+    + [Gitpod Workspaces](#gitpod-workspaces)
+  * [TESTING](#testing)
+    + [Testing Project Goals](#testing-project-goals)
+    + [Testing External User Goals & Stories](#testing-external-user-goals---stories)
+    + [Code Validation](#code-validation)
+    + [Response Testing](#response-testing)
+    + [Manual Testing](#manual-testing)
+  * [BUGS & FIXES](#bugs---fixes)
+    + [**Pressing Enter** during username input wasn't being caught...](#--pressing-enter---during-username-input-wasn-t-being-caught)
+  * [DEPLOYMENT](#deployment)
+- [CREDITS](#credits)
+  * [Content](#content)
+    + [Activate API Credentials](#activate-api-credentials)
+    + [Connect Project To Worksheet](#connect-project-to-worksheet)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
-***
+
+----
 
 
 ## USER EXPERIENCE (UX) 
@@ -27,9 +61,13 @@ PASTE ToC HERE
 ### External User Goals: User Stories
 
 - As a user, I want an easy-to-pick-up yet challeging game of chance to pass time online.
+
 - As a user, I want to easily identify the input required for each step.
+
 - As a user, I want to receive clear feedback in the case of erroneous inputs.
+
 - As a user, I want the option to play the game as many times as I wish.
+
 - As a user, I want to try and better the All-Time Bandit Buster score and see my name at the top!
 
   Additional ***user expectations*** for consideration include:
@@ -39,10 +77,15 @@ PASTE ToC HERE
 ### Project Goals
 
 - To deploy a command-line application to a cloud-based platform.
+
 - To create an online game of chance that is easy and fun play.
+
 - To ensure the game runs in a smooth loop, allowing users to play as many times as they wish.
+
 - To provide a positive UX by ensuring users are kept informed of their current in-game status.
+
 - To provide a positive UX by ensuring that any user input errors are effectively dealt with.
+
 - To include a process to track/record the best user scores for the game & display the all-time best.
 
 
@@ -57,6 +100,7 @@ PASTE ToC HERE
 Flowchart generated in [LucidChart](https://lucidchart.com/)
 
 
+[Back to top ⇧](#)
 ---- 
 
 
@@ -116,6 +160,7 @@ During the course of this project the following technologies were utilised:
 - [**Heroku**](https://heroku.com/) used to configure and deploy the final project.
 
 
+[Back to top ⇧](#)
 ----
 
 
@@ -160,7 +205,9 @@ During the course of this project the following technologies were utilised:
 
 - Successful submission of wager amount (see: Manual Testing) initiates selection of three random 'winning' reels. The user's wallet balance has the wager value deducted and is updated. Turns value is incremented by 1.
 
-  - The random reels result is compared to the winning conditions and, if required, rewards are calculated and ammended to the wallet value.
+  - The random reels result is compared to the winning conditions and, if required, rewards are calculated and ammended to the wallet value. 
+  
+    - Check if current credits > maxcredits and, if so, update maxcredits value.
 
   - The random reels are displayed to the user in a simple digital facsimilie of a one-armed bandit's reels with the win-line highlighted in white, out of the surrounding blue.
 
@@ -183,6 +230,9 @@ During the course of this project the following technologies were utilised:
 - Yellow text is used to inform the user of current number of games played and maximum credits held.
 
 - Then, while the user still has credits in their wallet, the game loop resets: The user is informed of their updated credit balance, reminded of the minimum wager and asked for their next wager amount. This loop will continues for as long as the user has credits to spin.
+
+
+[Back to top ⇧](#)
 
 
 ### End-of-Game User Choices
@@ -215,14 +265,14 @@ During the course of this project the following technologies were utilised:
 
     - An amended choice menu offers appropriate selection of 1 to play again and 2 to quit. 
 
+  After getting the main game & validation sorted and nearing the end of development, I had started experimenting with an enhanced scoreboard feature. However, given the limited time remaining I decided to not try fixing something that wasn't broken, as the current code successfully demonstrates worksheet integration and the potential that APIs offer. 
+
   ![EoG quit playing](assets/readme/game_screens/pp03_gameloop-9_quit.jpg)
 
-  - **3 to quit playing** displays a
+  - **3 to quit playing** (also **2 to quit playing**) displays a message thanking user for playing.
+
+  - The main game loop then ends and a fresh instance of the program is initiated, returning to the opening main logo. 
       
-
-### *Features to Implement*
-
-- 
 
 ----
 
@@ -244,27 +294,30 @@ Managed within **GitHub** and **Gitpod** via regular commits pushed to GitHub re
 4. Meaningful commit messages allow easy roll-back of any changes to earlier versions.
 
 
+[Back to top ⇧](#)
+
+
 ## TESTING 
 
 ### Testing Project Goals
 
-- To deploy a command-line application to a cloud-based platform.
+- To deploy a command-line application to a cloud-based platform.  **PASSED**
 
   ![App-in-window](assets/readme/game_screens/pp03_app_window.jpg)
 
-- To create an online game of chance that is easy and fun play.
+- To create an online game of chance that is easy and fun play.  **PASSED**
 
   ![Simple scoring](assets/readme/game_screens/pp03_feat-1_scoring.jpg)
 
-- To ensure the game runs in a smooth loop, allowing users to play as many times as they wish.
+- To ensure the game runs in a smooth loop, allowing users to play as many times as they wish.  **PASSED**
 
-- To provide a positive UX by ensuring users are kept informed of their current in-game status.
+- To provide a positive UX by ensuring users are kept informed of their current in-game status.  **PASSED**
 
   ![Game stats](assets/readme/game_screens/pp03_feat-_game_stats.jpg)
 
-- To provide a positive UX by ensuring that any user input errors are effectively dealt with.
+- To provide a positive UX by ensuring that any user input errors are effectively dealt with.  **PASSED**
 
-- To include a process to track/record the best user scores for the game & display the all-time best.
+- To include a process to track/record the best user scores for the game & display the all-time best.  **PASSED**
 
   ![Best players](assets/readme/game_screens/pp03_feat-3_best_players.jpg)
 
@@ -272,21 +325,21 @@ Managed within **GitHub** and **Gitpod** via regular commits pushed to GitHub re
 
 ### Testing External User Goals & Stories
 
-- As a user, I want an easy-to-pick-up yet challeging game of chance to pass time online.
+- As a user, I want an easy-to-pick-up yet challeging game of chance to pass time online.  **PASSED**
 
   ![Reels](assets/readme/game_screens/pp03_feat-2_reels.jpg)
 
 
-- As a user, I want to easily identify the input required for each step.
+- As a user, I want to easily identify the input required for each step.  **PASSED**
 
-- As a user, I want to receive clear feedback in the case of erroneous inputs.
+- As a user, I want to receive clear feedback in the case of erroneous inputs.  **PASSED**
 
-- As a user, I want the option to play the game as many times as I wish.
+- As a user, I want the option to play the game as many times as I wish.  **PASSED**
 
-- As a user, I want to try and better the All-Time Bandit Buster score and see my name at the top!
+- As a user, I want to try and better the All-Time Bandit Buster score and see my name at the top!  **PASSED**
 
 
-### Code Validation 
+### Code Validation  **PASSED** 
 
 Python
 
@@ -295,32 +348,39 @@ Python
 ![PEP8 validation screen](assets/readme/grab_screens/pp03_validation_pep8.jpg)
 
 
-### Response Testing
+### Response Testing  **PASSED**
 
 In order to test responsiveness to all device sizes, I used [amiresponsive](http://ami.responsivedesign.is/)
 
 ![amiresponsive](assets/readme/grab_screens/pp03_validation_amiresponsive.jpg)
 
 
-### Manual Testing
+### Manual Testing  **PASSED**
 
 
 | FEATURE | OUTCOME | EXAMPLE | PASS/FAIL |
 |---|---|:---:|:---:|
-| Name Input | Validate value is | ![Username](assets/readme/mantest_screens/pp03_mantest-1_username_inputs.jpg) | PASS |
-| Name Input | Validate value is | ![Wager1](assets/readme/mantest_screens/pp03_mantest-2a_wager_inputs.jpg) | PASS |
-| Name Input | Validate value is | ![Wager2](assets/readme/mantest_screens/pp03_mantest-2b_wager_inputs.jpg) | PASS |
-| Name Input | Validate value is | ![Wager3](assets/readme/mantest_screens/pp03_mantest-2c_wager_inputs.jpg) | PASS |
-| Name Input | Validate value is | ![EoG1](assets/readme/mantest_screens/pp03_mantest-3a_eog_main.jpg) | PASS |
-| Name Input | Validate value is | ![EoG2](assets/readme/mantest_screens/pp03_mantest-3b_eog_bp.jpg) | PASS |
-| Name Input | Validate value is | ![EoG3](assets/readme/mantest_screens/pp03_mantest-3c_eog_cat.jpg) | PASS |
+| Validate username inputs (str) | Checks: is not a number; is <8; is>0 | ![Username](assets/readme/mantest_screens/pp03_mantest-1_username_inputs.jpg) | PASS |
+| Validate wager inputs (int) | Checks: is not 0; is positive | ![Wager1](assets/readme/mantest_screens/pp03_mantest-2a_wager_inputs.jpg) | PASS |
+| Validate wager inputs (int) | Checks: is not a str or float | ![Wager2](assets/readme/mantest_screens/pp03_mantest-2b_wager_inputs.jpg) | PASS |
+| Validate wager inputs (int) | Checks: meets min. wager value | ![Wager3](assets/readme/mantest_screens/pp03_mantest-2c_wager_inputs.jpg) | PASS |
+| Validate main End of Game choice | Validate value is 1, 2 or 3 | ![EoG1](assets/readme/mantest_screens/pp03_mantest-3a_eog_main.jpg) | PASS |
+| Validate best player End of Game choice | Validate value is 1, 2 or 3 | ![EoG2](assets/readme/mantest_screens/pp03_mantest-3b_eog_bp.jpg) | PASS |
+| Validate End of Game choice | Validate value is not a cat! | ![EoG3](assets/readme/mantest_screens/pp03_mantest-3c_eog_cat.jpg) | PASS |
+
+- Verification also carried out for checking whether user can afford wager, else "Insufficient credits!" message. Missed getting a screenshot of that one!
+
+- In addition to input validation the game has also been manually verified in respect of correct math and updating of values for the wallet, credits, maxcredits, turns user variables.
+
+
+[Back to top ⇧](#)
 
 
 ## BUGS & FIXES
 
 I am pleased to say that the application is, to the best of my knowledge following extensive testing, currently bug-free! One of the main bugs I encountered during the development of this project involved preventing unexpected results by restricting the user from "just hitting Enter" during the username input event:
 
-### **Pressing Enter** during username input wasn't being caught...
+  ### **Pressing Enter** during username input wasn't being caught...
   
   • *Issue:* Whilst playtesting during development it was discovered that "just pressing Enter" for username input wasn't being caught and allowed game continuation with a blank username...
   
@@ -336,20 +396,34 @@ I am pleased to say that the application is, to the best of my knowledge followi
 
 **Heroku** was used to deploy the final application by following these steps (from a modified process as originally utilised in the Love Sandwiches project):
 
-• Create requirements.txt file using pip3 freeze > requirements.txt in console
+• Create requirements.txt file using `pip3 freeze > requirements.txt` in console
+
 • Commit changes; push to GitHub
+
 • Go to Heroku website
+
 • Click "Create new app" on Heroku dashboard
+
 • Enter app name; choose region (Europe); create app
+
 • Settings tab: "Reveal Config Vars"; add KEY: CREDS; paste contents of creds.json as VALUE
+
 • Add Config Var KEY: PORT with VALUE: 8000.
+
 • Under "Buildpacks" section select Python; save changes
+
 • Add NodeJS buildpack using the process above
+
 • Deploy tab: "Deployment method", select GitHub; connect
+
 • Search the repository to be deployed (portfolio-project-three); connect
+
 • Enable Automatic Deploys; initial Manual Deploy of application
 
 Link to the deployed application [here](https://python-bandit.herokuapp.com/). 
+
+
+[Back to top ⇧](#)
 
 
 # CREDITS
@@ -366,8 +440,70 @@ Much appreciation and thanks to my mentor, Marcel Mulders, for his continued adv
 
 • **Input validation for catching just hitting Enter** utilises code sourced & repurposed from: https://stackoverflow.com/questions/8761778/limiting-python-input-strings-to-certain-characters-and-lengths
 
-• **Google Cloud Platform** process for activating APIs and obtaing creds.json was achieved by re-referencing & revisiting the Love Sandwiches project.
+• **Google Cloud Platform** process for activating APIs (Application Programming Interfaces) and obtaining credentials was achieved by re-referencing & revisiting the Love Sandwiches project, as detailed below:
+
+- Create Google Sheets project for application (pref. use personal gmail account).
+  
+![gsheets](assets/readme/grab_screens/pp03_gsheet.jpg)
+
+### Activate API Credentials
 
 ![GCP](assets/readme/grab_screens/pp03_goog_cloud_plat.jpg)
 
-![gsheets](assets/readme/grab_screens/pp03_gsheet.jpg)
+• Go to Google Cloud Platform dashboard
+
+• Name & create New Project; select project
+
+• Go to APIs and Services/Library; search Google Drive
+
+• Select Google Drive & enable API
+
+• Select Add Credentials to generate credentials file
+
+• "Which API are you using?" choose 'Google Drive API'
+
+• "What data will you be accessing?" choose 'Application Data'
+
+• Select 'No' for use with Compute Engine, Kubernetes Engine, App Engine or Cloud Functions
+
+• Click Next; Enter a Service Account Name & click create
+
+• Select Basic>Editor from Role dropdown
+
+• Click Continue; click Done
+
+• Next page: Select Service Account created
+
+• Next page: Click Keys tab 
+
+• Click Add Key; select Create New Key
+
+• Select JSON, then Create
+
+• jsonfile with API credentials downloaded to computer
+
+• Back to: APIs and Services/Library; search Google Sheets
+
+• Select Google Sheets API and enable (no creds required)
+
+• Drag & drop creds file to GitPod workspace; rename as creds.json
+
+• Open json file; locate & copy client email
+
+• Add client email to Share on python_bandits Google sheet
+  - Allows for application to access data
+
+• Creds file contains sensitive data so add to gitignore file list to ensure it is never commited or sent to GitHub
+
+• Check that creds.json is not committed on next add by checking git status
+
+### Connect Project To Worksheet 
+
+• Install dependencies in GitPod using `pip3 install gspread google-auth`
+
+• Set SCOPE and constants values using the code provided by Code Institute
+
+• Using GSPREAD connect to python_bandits worksheet; Test for access to worksheet - SUCCESSFUL!
+
+
+[Back to top ⇧](#)

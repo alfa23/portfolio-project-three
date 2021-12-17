@@ -237,7 +237,7 @@ def game(username: str, wallet: int = 100):
             if turns > 1:
                 print(f"\033[1;33mYou have played {turns} games and held a "
                       f"maximum of {maxcredits} credits...\n\033[0;0m")
-            else:
+            else:   # For good English (game, not games)
                 print(f"\033[1;33mYou have played {turns} game and held a "
                       f"maximum of {maxcredits} credits...\n\033[0;0m")
 
