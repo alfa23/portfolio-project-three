@@ -363,7 +363,7 @@ In order to test responsiveness to all device sizes, I used [amiresponsive](http
 | Validate wager inputs (int) | Checks: is not a str or float | ![Wager2](assets/readme/mantest_screens/pp03_mantest-2b_wager_inputs.jpg) | PASS |
 | Validate wager inputs (int) | Checks: meets min. wager value | ![Wager3](assets/readme/mantest_screens/pp03_mantest-2c_wager_inputs.jpg) | PASS |
 | Validate main End of Game choice | Validate value is 1, 2 or 3 | ![EoG1](assets/readme/mantest_screens/pp03_mantest-3a_eog_main.jpg) | PASS |
-| Validate best player End of Game choice | Validate value is 1, 2 or 3 | ![EoG2](assets/readme/mantest_screens/pp03_mantest-3b_eog_bp.jpg) | PASS |
+| Validate best player End of Game choice | Validate value is 1 or 2 | ![EoG2](assets/readme/mantest_screens/pp03_mantest-3b_eog_bp.jpg) | PASS |
 | Validate End of Game choice | Validate value is not a cat! | ![EoG3](assets/readme/mantest_screens/pp03_mantest-3c_eog_cat.jpg) | PASS |
 
 - Verification also carried out for checking whether user can afford wager, else "Insufficient credits!" message. Missed getting a screenshot of that one!
