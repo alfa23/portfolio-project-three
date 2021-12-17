@@ -131,12 +131,18 @@ During the course of this project the following technologies were utilised:
 
 ![Intro Copy](assets/readme/game_screens/pp03_intro-2_mid_copy.jpg)
 
-- Wikipedia reference used as explainer for base concept of the game and the application name's origin, for all the rest of those users not old enough to know the term! Program suspends awaitng user input to continue.
+- Wikipedia reference used as explainer for base concept of the game and the application name's origin, for all the rest of those users not old enough to know the term! 
+
+- Program suspends awaitng user input to continue.
 
 
 ![Intro Footer](assets/readme/game_screens/pp03_intro-3_lower.jpg)
 
-- Informs user of the conditions of the game. Introduces the symbol set used to play the game (based on units of currency: €, £, $ and ¥) and details the winning combinations and their respective rewards. Added 'Enumerating Scores Database' copy to subtly hint to user that there is a mechanism for recording game scores. Awaits first user input: Enter their name if they want to play...
+- Informs user of the conditions of the game. Introduces the symbol set used to play the game (based on units of currency: €, £, $ and ¥) and details the winning combinations and their respective rewards. 
+
+  - Added 'Enumerating Scores Database' copy to subtly hint to user that there is a mechanism for recording game scores.
+
+  - Awaits first user input: Enter their name if they want to play...
 
 
 ### Game Loop
@@ -154,9 +160,9 @@ During the course of this project the following technologies were utilised:
 
 - Successful submission of wager amount (see: Manual Testing) initiates selection of three random 'winning' reels. The user's wallet balance has the wager value deducted and is updated. Turns value is incremented by 1.
 
-- The random reels result is compared to the winning conditions and, if required, rewards are calculated and ammended to the wallet value.
+  - The random reels result is compared to the winning conditions and, if required, rewards are calculated and ammended to the wallet value.
 
-- The random reels are displayed to the user in a simple digital facsimilie of a one-armed bandit's reels with the win-line highlighted in white, out of the surrounding blue.
+  - The random reels are displayed to the user in a simple digital facsimilie of a one-armed bandit's reels with the win-line highlighted in white, out of the surrounding blue.
 
   
   ![Losing reels](assets/readme/game_screens/pp03_gameloop-2a_loss.jpg)
@@ -181,30 +187,37 @@ During the course of this project the following technologies were utilised:
 
 ### End-of-Game User Choices
 
+
 ![You're broke](assets/readme/game_screens/pp03_gameloop-5_broke.jpg)
 
-- When the user eventually runs out of credits, a yellow-text-informative message apologises and lets them know they're broke. Users are then asked to choose from three numbered options: 1, play again; 2, see best players and 3, quit playing.
+- When the user eventually runs out of credits, a yellow-text-informative message apologises and lets them know they're broke. 
 
-- Successful submission of a choice (see: Manual Testing) initiates: 
+- Users are then asked to choose from three numbered options: 1, play again; 2, see best players and 3, quit playing.
+
 
   ![EoG user choices](assets/readme/game_screens/pp03_gameloop-6_eog_choices.jpg)
 
-  - 
+  - Successful submission of a choice (see: Manual Testing) initiates:  
 
 
   ![EoG play again](assets/readme/game_screens/pp03_gameloop-7_play_again.jpg)
 
-  - 
+  - **1 to play again** restarts the game loop using the current username, with fresh wallet and turns values. The game will continue infinitely on this main game loop until the user chooses another end-of-game option.
 
 
   ![EoG best players](assets/readme/game_screens/pp03_gameloop-8_best_players.jpg)
 
-  - 
+  - **2 to see best players** displays a simple message informing the player of the username and respective score for the All-Time Bandit Beater biggest wallet held and longest play streak during one game run.
+  
+  - Each game run this data is pulled & sorted fresh from the google spreadsheet linked to the application, which is also updated with every successfully completed game's username, maxcreds and turns data.
       
+    - The user is informed that the scores database has been updated with their latest score and encouraged to play some more to try and beat the all-time bests.
 
-![EoG quit playing](assets/readme/game_screens/pp03_gameloop-8_best_players.jpg)
+    - An amended choice menu offers appropriate selection of 1 to play again and 2 to quit. 
 
-- 
+  ![EoG quit playing](assets/readme/game_screens/pp03_gameloop-9_quit.jpg)
+
+  - **3 to quit playing** displays a
       
 
 ### *Features to Implement*
